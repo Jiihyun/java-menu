@@ -1,4 +1,7 @@
 package menu.exception;
 
-public class MenuException {
+public class MenuException extends IllegalArgumentException {
+    public MenuException(String message) {
+        super(message);
+    }
 }

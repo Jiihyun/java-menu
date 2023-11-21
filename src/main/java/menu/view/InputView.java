@@ -1,6 +1,7 @@
 package menu.view;
 
 import menu.converter.Converter;
+import menu.domain.dto.input.NamesRequest;
 import menu.io.reader.Reader;
 import menu.io.writer.Writer;
 
@@ -18,11 +19,12 @@ public class InputView {
         this.writer = writer;
     }
 
-    public List<String> readNames() {
+    public NamesRequest readNames() {
         writer.writeln(START_MSG);
         writer.writeln(INPUT_NAME_MSG);
-        String names = reader.readLine();
-        return Converter.strToList(names);
+        String input = reader.readLine();
+        List<String> inputNames = Converter.strToList(input);
+        return NamesRequest.from(inputNames);
     }
 
     public List<String> readNonEdibleMenu(String name) {
