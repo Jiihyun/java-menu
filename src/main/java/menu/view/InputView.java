@@ -1,11 +1,16 @@
 package menu.view;
 
 import menu.converter.Converter;
+import menu.domain.Name;
 import menu.domain.dto.input.NamesRequest;
+import menu.domain.dto.input.NonEdibleMenuRequest;
+import menu.domain.dto.output.NamesResponse;
 import menu.io.reader.Reader;
 import menu.io.writer.Writer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InputView {
     private static final String START_MSG = "점심 메뉴 추천을 시작합니다.";
@@ -27,10 +32,16 @@ public class InputView {
         return NamesRequest.from(inputNames);
     }
 
-    public List<String> readNonEdibleMenu(String name) {
-        writer.writef(name + INPUT_MENU_MSG + System.lineSeparator());
-        String menus = reader.readLine();
-        return Converter.strToList(menus);
+    public NonEdibleMenuRequest readNonEdibleMenu(NamesResponse namesResponse) {
+        Map<Name, List<String>> inputNonEdibleMenu = new HashMap<>();
+        List<Name> names = namesResponse.getNames();
+        for (Name name : names) {
+            writer.writef(name + INPUT_MENU_MSG + System.lineSeparator());
+            String inputMenus = reader.readLine();
+            List<String> menus = Converter.strToList(inputMenus);
+            inputNonEdibleMenu.put(name, menus);
+        }
+        return NonEdibleMenuRequest.from(inputNonEdibleMenu);
     }
 
 }
