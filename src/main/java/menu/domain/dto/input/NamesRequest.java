@@ -12,4 +12,8 @@ public class NamesRequest {
     public static NamesRequest from(List<String> inputNames) {
         return new NamesRequest(inputNames);
     }
+
+    public List<String> getInputNames() {
+        return inputNames;
+    }
 }

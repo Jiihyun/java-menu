@@ -1,5 +1,6 @@
 package menu.domain;
 
+import menu.domain.dto.output.NamesResponse;
 import menu.validator.NameValidator;
 
 import java.util.List;
@@ -19,5 +20,9 @@ public class Names {
                 .map(Name::from)
                 .collect(Collectors.toUnmodifiableList());
         return new Names(names);
+    }
+
+    public NamesResponse toNamesResponse(Names names) {
+        return NamesResponse.from(names);
     }
 }
