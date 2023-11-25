@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static menu.domain.menu.MenuCategories.*;
 
 public enum Menu {
-    NONE("", MenuCategories.NONE),
+    NONE(" ", MenuCategories.NONE),
 
     //JAPANESE
     GYUDON("규동", JAPANESE),
@@ -85,7 +85,11 @@ public enum Menu {
     public static List<String> getMenuNames(MenuCategories generatedCategory) {
         return Arrays.stream(values())
                 .filter(menu -> menu.category.equals(generatedCategory))
-                .map(Menu::name)
+                .map(Menu::getName)
                 .collect(Collectors.toList());
+    }
+
+    public String getName() {
+        return name;
     }
 }
