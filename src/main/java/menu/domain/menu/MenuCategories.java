@@ -28,4 +28,8 @@ public enum MenuCategories {
     private static Predicate<MenuCategories> isSameNumberWith(int number) {
         return category -> category.number == number;
     }
+
+    public String getName() {
+        return name;
+    }
 }

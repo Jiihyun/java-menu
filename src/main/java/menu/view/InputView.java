@@ -36,7 +36,7 @@ public class InputView {
         Map<Name, List<String>> inputNonEdibleMenu = new HashMap<>();
         List<Name> names = namesResponse.getNames();
         for (Name name : names) {
-            writer.writef(name + INPUT_MENU_MSG + System.lineSeparator());
+            writer.writef(name.getName() + INPUT_MENU_MSG + System.lineSeparator());
             String inputMenus = reader.readLine();
             List<String> menus = Converter.strToList(inputMenus);
             inputNonEdibleMenu.put(name, menus);
