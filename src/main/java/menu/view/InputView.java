@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class InputView {
-    private static final String START_MSG = "점심 메뉴 추천을 시작합니다.";
+    private static final String START_MSG = "점심 메뉴 추천을 시작합니다." + System.lineSeparator();
     private static final String INPUT_NAME_MSG = "코치의 이름을 입력해 주세요. (, 로 구분)";
     private static final String INPUT_MENU_MSG = "(이)가 못 먹는 메뉴를 입력해 주세요.";
     private final Reader reader;
@@ -36,7 +36,7 @@ public class InputView {
         Map<Name, List<String>> inputNonEdibleMenu = new HashMap<>();
         List<Name> names = namesResponse.getNames();
         for (Name name : names) {
-            writer.writef(name.getName() + INPUT_MENU_MSG + System.lineSeparator());
+            writer.writef(System.lineSeparator() + name.getName() + INPUT_MENU_MSG + System.lineSeparator());
             String inputMenus = reader.readLine();
             List<String> menus = Converter.strToList(inputMenus);
             inputNonEdibleMenu.put(name, menus);
