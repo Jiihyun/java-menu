@@ -23,6 +23,6 @@ public class Names {
     }
 
     public NamesResponse toNamesResponse(Names names) {
-        return NamesResponse.from(names);
+        return NamesResponse.from(names.names);
     }
 }
