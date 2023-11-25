@@ -19,13 +19,13 @@ public class MenuController {
     }
 
     public void start() {
-        NonEdibleMenu nonEdibleMenu = readCoachesData();
+        NonEdibleMenu nonEdibleMenu = readNameAndNonEdibleMenu();
         WeekMenuCategories weekMenuCategories = WeekMenuCategories.from(categorySelector);
-        ResultCategories resultCategories = ResultCategories.from(weekMenuCategories, nonEdibleMenu);
-        outputView.printResult(weekMenuCategories, resultCategories);
+        Result result = Result.from(weekMenuCategories, nonEdibleMenu);
+        outputView.printResult(weekMenuCategories, result);
     }
 
-    private NonEdibleMenu readCoachesData() {
+    private NonEdibleMenu readNameAndNonEdibleMenu() {
         NamesRequest namesRequest = inputView.readNames();
         Names names = Names.from(namesRequest.getInputNames());
         NamesResponse namesResponse = names.toNamesResponse(names);

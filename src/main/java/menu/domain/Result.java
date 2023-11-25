@@ -9,17 +9,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ResultCategories {
+public class Result {
     private final WeekMenuCategories weekMenuCategories;
     private final NonEdibleMenu nonEdibleMenu;
 
-    public ResultCategories(WeekMenuCategories weekMenuCategories, NonEdibleMenu nonEdibleMenu) {
+    public Result(WeekMenuCategories weekMenuCategories, NonEdibleMenu nonEdibleMenu) {
         this.weekMenuCategories = weekMenuCategories;
         this.nonEdibleMenu = nonEdibleMenu;
     }
 
-    public static ResultCategories from(WeekMenuCategories weekMenuCategories, NonEdibleMenu nonEdibleMenu) {
-        return new ResultCategories(weekMenuCategories, nonEdibleMenu);
+    public static Result from(WeekMenuCategories weekMenuCategories, NonEdibleMenu nonEdibleMenu) {
+        return new Result(weekMenuCategories, nonEdibleMenu);
     }
 
     public Map<Name, List<Menu>> getMenusPerPerson() {

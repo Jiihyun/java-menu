@@ -1,7 +1,7 @@
 package menu.view;
 
 import menu.domain.Name;
-import menu.domain.ResultCategories;
+import menu.domain.Result;
 import menu.domain.WeekMenuCategories;
 import menu.domain.menu.Menu;
 import menu.domain.menu.MenuCategories;
@@ -19,12 +19,12 @@ public class OutputView {
         this.writer = writer;
     }
 
-    public void printResult(WeekMenuCategories weekMenuCategories, ResultCategories resultCategories) {
+    public void printResult(WeekMenuCategories weekMenuCategories, Result result) {
         writer.writeln(System.lineSeparator() + "메뉴 추천 결과입니다.");
         writer.writeln("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]");
         String categories = weekMenuCategories.getWeekMenuCategories().stream().map(MenuCategories::getName).collect(Collectors.joining(" | "));
         writer.writef(FORMAT, "카테고리", categories);
-        for (Map.Entry<Name, List<Menu>> entry : resultCategories.getMenusPerPerson().entrySet()) {
+        for (Map.Entry<Name, List<Menu>> entry : result.getMenusPerPerson().entrySet()) {
             String name = entry.getKey().getName();
             String menus = entry.getValue().stream().map(Menu::getName).collect(Collectors.joining(" | "));
             writer.writef(FORMAT, name, menus);
