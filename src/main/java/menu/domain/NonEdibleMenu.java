@@ -23,4 +23,8 @@ public class NonEdibleMenu {
                 ));
         return new NonEdibleMenu(nonEdibleMenu);
     }
+
+    public Map<Name, List<Menu>> getNonEdibleMenu() {
+        return nonEdibleMenu;
+    }
 }
