@@ -1,5 +1,7 @@
 package menu.domain.menu;
 
+import menu.exception.ExceptionMessage;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +9,7 @@ import java.util.stream.Collectors;
 import static menu.domain.menu.MenuCategories.*;
 
 public enum Menu {
-    NOME("없음", NONE),
+    NONE("", MenuCategories.NONE),
 
     //JAPANESE
     GYUDON("규동", JAPANESE),
@@ -77,7 +79,7 @@ public enum Menu {
         return menus.stream()
                 .filter(menu -> menu.name.equals(inputName))
                 .findFirst()
-                .orElse(NOME);
+                .orElseThrow(ExceptionMessage.NON_EXISTENT_MENU::getException);
     }
 
     public static List<String> getMenuNames(MenuCategories generatedCategory) {

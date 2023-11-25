@@ -2,6 +2,7 @@ package menu.domain;
 
 import menu.domain.dto.input.NonEdibleMenuRequest;
 import menu.domain.menu.Menu;
+import menu.validator.MenuValidator;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class NonEdibleMenu {
     }
 
     public static NonEdibleMenu from(NonEdibleMenuRequest nonEdibleMenuRequest) {
+        MenuValidator.validateMenuQuantity(nonEdibleMenuRequest);
         Map<Name, List<Menu>> nonEdibleMenu = nonEdibleMenuRequest.getNonEdibleMenu().entrySet()
                 .stream()
                 .collect(Collectors.toMap(

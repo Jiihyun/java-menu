@@ -3,7 +3,9 @@ package menu.exception;
 public enum ExceptionMessage {
     NAME_LENGTH("이름은 최소 2글자부터 최대 4글자까지 입력 가능합니다.\n"),
     DUPLICATED_NAME("이미 존재하는 이름입니다.\n"),
-    CAPACITY("최소 2명부터 최대 5명까지 수용 가능합니다.\n");
+    CAPACITY("최소 2명부터 최대 5명까지 수용 가능합니다.\n"),
+    NON_EXISTENT_MENU("존재하지 않는 메뉴입니다.\n"),
+    MENU_QUANTITY("최대 2개까지 입력 가능합니다.\n");
     private static final String PREFIX = "[ERROR] ";
     private final String message;
 
